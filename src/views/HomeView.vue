@@ -1,5 +1,5 @@
 <script setup>
-import FormUserPreference from '../components/FormUserPreference.vue'
+import FormUserPreference from '../components/QuizPreferencesForm.vue'
 </script>
 <template>
   <main>

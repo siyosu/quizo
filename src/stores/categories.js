@@ -1,5 +1,9 @@
 const categories = [
   {
+    id: 0,
+    name: 'Any Category'
+  },
+  {
     id: 9,
     name: 'General Knowledge'
   },

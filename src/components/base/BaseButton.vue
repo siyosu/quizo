@@ -7,6 +7,10 @@ defineProps({
   loading: {
     type: Boolean,
     default: false
+  },
+  spinner: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -22,10 +26,14 @@ const variantsClass = {
   <div class="flex" :class="loading && 'cursor-not-allowed'">
     <button
       v-bind="$attrs"
-      class="flex w-full items-center justify-center rounded px-4 py-2 transition active:scale-[.98] disabled:pointer-events-none"
+      class="flex w-full items-center justify-center gap-2 rounded px-4 py-2 transition active:scale-[.98] disabled:pointer-events-none"
       :class="variantsClass[variant]"
       :disabled="loading"
     >
+      <span
+        v-if="spinner && loading"
+        class="h-4 w-4 animate-spin rounded-full border-2 border-dotted border-foreground"
+      ></span>
       <slot>Submit</slot>
     </button>
   </div>

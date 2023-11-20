@@ -14,6 +14,9 @@ const get = async (endpoint, params = {}) => {
     return res.data
   } catch (error) {
     console.error(error)
+    if(error.request && error.request.status === 429){
+      error.message = "Slow down..."
+    }
     throw error
   }
 }

@@ -1,9 +1,22 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
 
 export const useQuizStore = defineStore('quiz', () => {
   const questions = ref([])
+  const questionIndex = ref(null)
+  const selectedQuestion = ref(null)
 
+  watch(questionIndex, () => {
+    if(questionIndex.value >= questions.value.length || questionIndex.value < 0){
+      console.warn('The question index must be in the range of 0 and question length')
+      return
+    }
+    selectedQuestion.value = questions.value[questionIndex.value]
+  })
+
+  const router = useRouter()
+  
   const populateQuestions = (rawQuestions) => {
     questions.value = rawQuestions.map((question) => {
       const newQuestion = {
@@ -26,7 +39,9 @@ export const useQuizStore = defineStore('quiz', () => {
       }
       return newQuestion
     })
+    questionIndex.value = 0
+    router.push({ name: 'play' })
   }
 
-  return { questions, populateQuestions }
+  return { questions, questionIndex, selectedQuestion, populateQuestions }
 })

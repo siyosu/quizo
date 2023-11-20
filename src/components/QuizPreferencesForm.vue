@@ -55,7 +55,6 @@ const getQuestions = async () => {
         <BaseInput v-model="preference.amount" type="number" label="Number of Questions" />
       </div>
       <BaseButton :loading="isLoading" variant="border" />
-      <pre>{{ JSON.stringify(preference, null, 2) }}</pre>
     </form>
   </div>
 </template>

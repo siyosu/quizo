@@ -2,7 +2,7 @@
   <header class="border-b">
     <div class="container py-6">
       <div>
-        <a class="text-2xl font-bold uppercase" href="#">Quizo</a>
+        <RouterLink :to="{ name: 'home' }" class="text-2xl font-bold uppercase" href="#">Quizo</RouterLink>
       </div>
     </div>
   </header>

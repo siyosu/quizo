@@ -31,7 +31,6 @@ const onChange = (e) => {
       v-for="item in list"
       :key="item.id ?? item"
       :value="item.id ?? item"
-      :selected="item.id ?? item === modelValue"
     >
       {{ item.name ?? item }}
     </option>

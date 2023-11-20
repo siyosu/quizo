@@ -9,9 +9,7 @@ onClickOutside(modal, () => {
 })
 </script>
 <template>
-  <div
-    class="fixed left-0 top-0 flex h-screen w-full items-center justify-center px-6 backdrop-blur-sm"
-  >
+  <div class="fixed left-0 top-0 flex h-screen w-full items-center justify-center bg-black/10 px-6">
     <div ref="modal" class="max-w-lg">
       <slot><p>Hello World</p></slot>
     </div>

@@ -37,7 +37,7 @@ const closeModal = () => {
             </li>
             <li class="flex gap-2">
               <span class="self-start rounded-full bg-indigo-100 px-2 py-1">Boolean</span>You need
-              to choose if the provided statement is true or false
+              to choose if the provided question or statement is true or false
             </li>
           </ul>
         </div>

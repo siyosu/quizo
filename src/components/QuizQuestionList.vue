@@ -1,14 +1,23 @@
 <script setup>
 import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
 import { useQuizStore } from '../stores/quiz'
+import QuizHelpModal from './QuizHelpModal.vue'
 import IconQuestion from './icons/IconQuestion.vue'
 
 const store = useQuizStore()
 const { questions, questionIndex } = storeToRefs(store)
 
 const select = (index) => {
-  console.log(index)
   questionIndex.value = index
+}
+
+const showModal = ref(false)
+const openModal = () => {
+  showModal.value = true
+}
+const closeModal = () => {
+  showModal.value = false
 }
 </script>
 
@@ -17,11 +26,12 @@ const select = (index) => {
     <div class="mb-4 flex justify-between">
       <span class="text-lg font-bold">Question List</span>
       <span
+        @click="openModal"
         class="flex h-6 w-6 cursor-pointer justify-center rounded-full border-2 border-foreground fill-foreground p-[2px]"
         ><IconQuestion
       /></span>
     </div>
-
+    <QuizHelpModal :show-modal="showModal" @close="closeModal" />
     <ul class="grid grid-cols-5 gap-2">
       <li
         v-for="(question, i) in questions"

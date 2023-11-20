@@ -46,18 +46,5 @@ const closeModal = () => {
         <span class="font-semibold md:text-xl">{{ i + 1 }}</span>
       </li>
     </ul>
-
-    <div class="mt-4 flex justify-between text-sm font-medium">
-      <BaseButton variant="border" v-if="questionIndex > 0" @click.stop="select(questionIndex - 1)"
-        >Prev</BaseButton
-      >
-      <span></span>
-      <BaseButton
-        variant="border"
-        v-if="questionIndex < questions.length - 1"
-        @click.stop="select(questionIndex + 1)"
-        >Next</BaseButton
-      >
-    </div>
   </div>
 </template>

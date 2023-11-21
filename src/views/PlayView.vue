@@ -31,22 +31,24 @@ const closeResultsModal = () => {
 <template>
   <main>
     <section class="mt-6">
-      <div class="container mx-auto max-w-lg">
-        <QuizQuestionList />
-        <QuizQuestionForm />
-        <div class="mt-4 rounded border p-4">
-          <BaseButton class="w-full" @click="openConfirmModal">Submit Answers</BaseButton>
-          <ConfirmModal
-            @close="closeConfirmModal"
-            @confirm="setResults"
-            :show-modal="showConfirmModal"
-          >
-            <p>
-              Please review your questions and make sure you've answered all of them correctly!
-              There is no going back!
-            </p>
-          </ConfirmModal>
-          <QuizResultsModal @close="closeResultsModal" :show-modal="showResultsModal" />
+      <div class="container">
+        <div class="grid gap-4 md:grid-cols-2">
+          <QuizQuestionList />
+          <QuizQuestionForm />
+          <div class="rounded border p-4 md:col-[2/3]">
+            <BaseButton class="w-full" @click="openConfirmModal">Submit Answers</BaseButton>
+            <ConfirmModal
+              @close="closeConfirmModal"
+              @confirm="setResults"
+              :show-modal="showConfirmModal"
+            >
+              <p>
+                Please review your questions and make sure you've answered all of them correctly!
+                There is no going back!
+              </p>
+            </ConfirmModal>
+            <QuizResultsModal @close="closeResultsModal" :show-modal="showResultsModal" />
+          </div>
         </div>
       </div>
     </section>

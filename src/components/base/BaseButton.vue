@@ -31,7 +31,7 @@ const variantsClass = {
   >
     <span
       v-if="spinner && loading"
-      class="h-4 w-4 animate-spin rounded-full border-2 border-dotted border-foreground"
+      class="h-4 w-4 animate-spin rounded-full border-2 border-dotted border-primary-foreground"
     ></span>
     <slot>Submit</slot>
   </button>

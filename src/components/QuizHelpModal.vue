@@ -32,12 +32,14 @@ const closeModal = () => {
           <h5 class="font-semibold">Quiz Type</h5>
           <ul class="flex list-inside list-disc flex-col gap-2 text-sm">
             <li class="flex gap-2">
-              <span class="self-start rounded-full bg-amber-100 px-2 py-1">Multiple</span>You need
-              to choose one answer from the 4 provided answer
+              <span class="self-start rounded-full bg-amber-100 px-2 py-1 dark:bg-amber-600"
+                >Multiple</span
+              >You need to choose one answer from the 4 provided answer
             </li>
             <li class="flex gap-2">
-              <span class="self-start rounded-full bg-indigo-100 px-2 py-1">Boolean</span>You need
-              to choose if the provided question or statement is true or false
+              <span class="self-start rounded-full bg-indigo-100 px-2 py-1 dark:bg-indigo-600"
+                >Boolean</span
+              >You need to choose if the provided question or statement is true or false
             </li>
           </ul>
         </div>

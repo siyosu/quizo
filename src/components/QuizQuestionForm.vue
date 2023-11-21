@@ -1,10 +1,20 @@
 <script setup>
+import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useQuizStore } from '../stores/quiz'
+import { useSettingsStore } from '../stores/settings'
 
 const store = useQuizStore()
 const { selectedQuestion: question, questionIndex, questions } = storeToRefs(store)
 
+const { settings } = storeToRefs(useSettingsStore())
+const allowNext = computed(() => {
+  if (settings.value.allowSkip) {
+    return true
+  } else {
+    return question.value.answer !== null
+  }
+})
 const select = (index) => {
   questionIndex.value = index
 }
@@ -15,12 +25,16 @@ const select = (index) => {
     <div>
       <div class="mb-4 flex items-center justify-between gap-2">
         <span
-          class="rounded-full bg-teal-100 px-4 py-1 text-xs sm:text-sm"
+          class="rounded-full bg-teal-100 px-4 py-1 text-xs dark:bg-secondary sm:text-sm"
           v-html="question.category"
         ></span>
         <span
           class="rounded-full px-4 py-1 text-xs sm:text-sm"
-          :class="question.type === 'multiple' ? 'bg-amber-100' : 'bg-indigo-100'"
+          :class="
+            question.type === 'multiple'
+              ? 'bg-amber-100 dark:bg-amber-600'
+              : 'bg-indigo-100 dark:bg-indigo-600'
+          "
           >{{ question.type[0].toUpperCase() + question.type.slice(1) }}</span
         >
       </div>
@@ -47,7 +61,7 @@ const select = (index) => {
       <span></span>
       <BaseButton
         variant="border"
-        v-if="questionIndex < questions.length - 1"
+        v-if="questionIndex < questions.length - 1 && allowNext"
         @click="select(questionIndex + 1)"
         >Next</BaseButton
       >

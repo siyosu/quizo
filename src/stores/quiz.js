@@ -18,7 +18,10 @@ export const useQuizStore = defineStore('quiz', () => {
   const results = ref(null)
 
   watch(questionIndex, () => {
-    if (questionIndex.value >= questions.value.length || questionIndex.value < 0) {
+    if (
+      (questionIndex.value >= questions.value.length || questionIndex.value < 0) &&
+      questionIndex.value !== null
+    ) {
       console.warn('The question index must be in the range of 0 and question length')
       return
     }

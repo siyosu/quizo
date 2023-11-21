@@ -24,7 +24,8 @@ const getQuestions = async () => {
   isLoading.value = true
   const query = { amount: preference.amount }
   preference.category !== 0 && (query.category = preference.category)
-  preference.dificulty !== 'Any Difficulty' && (query.dificulty = preference.dificulty.toLowerCase())
+  preference.dificulty !== 'Any Difficulty' &&
+    (query.dificulty = preference.dificulty.toLowerCase())
   preference.type !== 'Any Type' && (query.type = preference.type.toLowerCase())
   try {
     const questions = await quizService.getQuetions(query)
@@ -38,7 +39,10 @@ const getQuestions = async () => {
 </script>
 <template>
   <div class="mx-auto max-w-lg">
-    <div v-if="errorMessage" class="p-4 rounded border mb-2 border-destructive bg-rose-50 text-sm">
+    <div
+      v-if="errorMessage"
+      class="mb-2 rounded border border-destructive bg-background p-4 text-sm text-destructive"
+    >
       <p class="font-medium">{{ errorMessage }}</p>
       <p>Please try again.</p>
     </div>
@@ -56,9 +60,13 @@ const getQuestions = async () => {
         <BaseSelect v-model="preference.type" :list="types" label="Type" />
       </div>
       <div class="flex flex-col">
-        <BaseSelect v-model="preference.amount" :list="[5,10,15,25]" label="Number of Questions" />
+        <BaseSelect
+          v-model="preference.amount"
+          :list="[5, 10, 15, 25]"
+          label="Number of Questions"
+        />
       </div>
-      <BaseButton :loading="isLoading" variant="border" spinner/>
+      <BaseButton :loading="isLoading" spinner />
     </form>
   </div>
 </template>

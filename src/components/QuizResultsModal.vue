@@ -35,7 +35,7 @@ const closeModal = () => {
                 'text-amber-500': ['C', 'D'].includes(results.grade),
                 'text-rose-500': ['E', 'F'].includes(results.grade)
               }"
-              >{{ results.score }}</span
+              >{{ results.score.toFixed(2) }}</span
             >
           </div>
           <p class="flex flex-wrap justify-center gap-1 text-sm sm:text-base">

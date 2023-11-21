@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const ApiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: 'https://opentdb.com/',
   withCredentials: false,
   headers: {
     Accept: 'application/json'

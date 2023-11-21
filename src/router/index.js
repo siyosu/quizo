@@ -19,6 +19,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  const title = to.name === 'play' ? 'Play' : 'Home'
+  document.title = `Quizo | ${title}`
+
   const store = useQuizStore()
   if (to.name === 'play' && !store.questions.length) {
     router.push({ name: 'home' })

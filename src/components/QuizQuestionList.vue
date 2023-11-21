@@ -4,11 +4,14 @@ import { ref } from 'vue'
 import { useQuizStore } from '../stores/quiz'
 import QuizHelpModal from './QuizHelpModal.vue'
 import IconQuestion from './icons/IconQuestion.vue'
+import { useSettingsStore } from '../stores/settings'
 
 const store = useQuizStore()
 const { questions, questionIndex } = storeToRefs(store)
 
+const {settings} = storeToRefs(useSettingsStore())
 const select = (index) => {
+  if(!settings.value.allowSkip) return
   questionIndex.value = index
 }
 
@@ -37,7 +40,7 @@ const closeModal = () => {
         v-for="(question, i) in questions"
         class="flex aspect-square cursor-pointer items-center justify-center rounded border transition-colors hover:bg-accent"
         :class="{
-          'bg-sky-100': question.answer !== null,
+          'bg-sky-100 dark:bg-secondary': question.answer !== null,
           'border-2 border-sky-300': i === questionIndex
         }"
         :key="question.question"
